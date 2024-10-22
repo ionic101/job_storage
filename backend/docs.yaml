@@ -1,0 +1,113 @@
+openapi: 3.1.0
+info:
+  title: JobStorageAPI
+  description: Техническая документация JobStorageAPI
+  version: 0.1.0
+paths:
+  /login:
+    post:
+      summary: Вход в аккаунт
+      description: Вход в аккаунт с помощью почты и пароля
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mail:
+                  type: string
+                password:
+                  type: string
+            examples:
+              test:
+                value:
+                  mail: test@aimmap.ru
+                  password: 8sQZya
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            json:
+              schema:
+                type: object
+                properties:
+                  Authorization:
+                    type: string
+              examples:
+                test:
+                  value:
+                    Authorization: q7jJkdCcT?tBPzqjAMDgjdw1uC?PVpw=e2zY?52gY5DzFbRTE/lWYDubNFEM7DAp5WkyHHQBSuaLfQDl2ENIwqw2GxL/KjdTsInvUjxH!e?=X-U634wO6zpXdmIDLL4o?5TuDk?c7AlzhL1YHSsqXb-EhYL-hbrjNYVzNpBJ2L6oh0GZlD0S4UZjm!GGjuP=hydZAs1NsRNeJlZslOI4QP9?xByrI7bqtke?I2hZga7nTmy?h9IoHxwMaamHncIr
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              examples:
+                test:
+                  value:
+                    message: incorrect username or password
+  /register:
+    post:
+      summary: Регистрация аккаунта
+      description: Регистрация аккаунта с указанием имени, почты и пароля
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                mail:
+                  type: string
+                password:
+                  type: string
+            examples:
+              test:
+                value:
+                  name: Вася
+                  mail: test@aimmap.ru
+                  password: 8sQZya
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            json:
+              schema:
+                type: object
+                properties:
+                  Authorization:
+                    type: string
+              examples:
+                test:
+                  value:
+                    Authorization: q7jJkdCcT?tBPzqjAMDgjdw1uC?PVpw=e2zY?52gY5DzFbRTE/lWYDubNFEM7DAp5WkyHHQBSuaLfQDl2ENIwqw2GxL/KjdTsInvUjxH!e?=X-U634wO6zpXdmIDLL4o?5TuDk?c7AlzhL1YHSsqXb-EhYL-hbrjNYVzNpBJ2L6oh0GZlD0S4UZjm!GGjuP=hydZAs1NsRNeJlZslOI4QP9?xByrI7bqtke?I2hZga7nTmy?h9IoHxwMaamHncIr
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              examples:
+                example1:
+                  value:
+                    message: Невалидное имя
+                example2:
+                  value:
+                    message: Невалидная почта
+                example3:
+                  value:
+                    message: Невалидный пароль
+  /vacancies:
+    get:
+      summary: Получить список вакансий
+      description: Получить список вакансий на основе фильтров
