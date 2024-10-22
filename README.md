@@ -1,2 +1,4 @@
-# job_storage
-Job search application with a large number of vacancies
+# JobStorage
+Приложение для поиска работы с большой базой с вакансиями, взятой с популярных источников
+
+*ПРИЛОЖЕНИЕ НАХОДИТСЯ В РАЗРАБОТКЕ*
