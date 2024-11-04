@@ -5,3 +5,9 @@ run:
 
 migrate:
 	cd $(APPLICATION_NAME)/db && alembic upgrade head
+
+revision:
+	cd $(APPLICATION_NAME)/db && alembic revision --autogenerate
+
+downgrade:
+	cd $(APPLICATION_NAME)/db && alembic downgrade -1
