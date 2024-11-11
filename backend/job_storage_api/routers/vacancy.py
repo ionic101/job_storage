@@ -4,7 +4,6 @@ from job_storage_api.db.models import VacancyModel
 from typing import List, Annotated
 from job_storage_api.db.connection import get_session
 from sqlalchemy.orm import Session
-from random import randint
 
 
 

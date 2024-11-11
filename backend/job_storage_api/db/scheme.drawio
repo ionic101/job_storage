@@ -1,0 +1,49 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
+  <diagram name="Страница — 1" id="P65uJVg1xD7Lp8pMuiB_">
+    <mxGraphModel dx="1050" dy="621" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="tb89POoRp49hMDSTBCBt-1" value="Vacancy" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="290" y="150" width="120" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="tb89POoRp49hMDSTBCBt-2" value="&lt;div&gt;&lt;div&gt;&lt;b&gt;*id&lt;/b&gt;&lt;/div&gt;&lt;div&gt;name&lt;/div&gt;&lt;div&gt;description&lt;/div&gt;&lt;div&gt;employer_name&lt;/div&gt;&lt;div&gt;experience_id&lt;/div&gt;&lt;div&gt;currency&lt;/div&gt;&lt;div&gt;source_name&lt;/div&gt;&lt;div&gt;source_link&lt;/div&gt;&lt;div&gt;skills&lt;/div&gt;&lt;div&gt;salary_from&lt;/div&gt;&lt;div&gt;salary_to&lt;/div&gt;&lt;/div&gt;&lt;div&gt;area&lt;/div&gt;&lt;div&gt;published_at&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="tb89POoRp49hMDSTBCBt-1" vertex="1">
+          <mxGeometry y="50" width="120" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="mGRJRIDgVxIocvvJnjrP-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERzeroToMany;endFill=0;startArrow=ERmandOne;startFill=0;" edge="1" parent="1" source="tb89POoRp49hMDSTBCBt-5" target="tb89POoRp49hMDSTBCBt-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tb89POoRp49hMDSTBCBt-5" value="User" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="480" y="185" width="120" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="tb89POoRp49hMDSTBCBt-6" value="&lt;div&gt;&lt;b&gt;*id&lt;/b&gt;&lt;/div&gt;&lt;div&gt;full_name&lt;/div&gt;&lt;div&gt;password_hash&lt;/div&gt;&lt;div&gt;email&lt;/div&gt;&lt;div&gt;date_of_birth&lt;/div&gt;&lt;div&gt;resume_id&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="tb89POoRp49hMDSTBCBt-5" vertex="1">
+          <mxGeometry y="50" width="120" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="tb89POoRp49hMDSTBCBt-7" value="Resume" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="680" y="150" width="120" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="tb89POoRp49hMDSTBCBt-8" value="&lt;div&gt;&lt;b&gt;*id&lt;/b&gt;&lt;/div&gt;&lt;div&gt;user_id&lt;/div&gt;&lt;div&gt;post_name&lt;/div&gt;&lt;div&gt;description&lt;/div&gt;&lt;div&gt;&lt;u&gt;experience&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;education&lt;/u&gt;&lt;/div&gt;&lt;div&gt;area&lt;/div&gt;&lt;div&gt;work_mode&lt;/div&gt;&lt;div&gt;skills&lt;/div&gt;&lt;div&gt;links&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="tb89POoRp49hMDSTBCBt-7" vertex="1">
+          <mxGeometry y="50" width="120" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="tb89POoRp49hMDSTBCBt-9" value="&lt;u&gt;Experience&lt;/u&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="940" y="120" width="160" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="tb89POoRp49hMDSTBCBt-10" value="&lt;div&gt;post_name&lt;/div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;company_name&lt;/span&gt;&lt;div&gt;description&lt;/div&gt;&lt;div&gt;year_start&lt;/div&gt;&lt;div&gt;year_end&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="tb89POoRp49hMDSTBCBt-9" vertex="1">
+          <mxGeometry y="50" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="mGRJRIDgVxIocvvJnjrP-6" value="&lt;u&gt;Education&lt;/u&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="940" y="320" width="120" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="mGRJRIDgVxIocvvJnjrP-7" value="&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;&lt;/span&gt;&lt;span style=&quot;white-space: pre-wrap;&quot; data-src-align=&quot;8:9&quot; class=&quot;EzKURWReUAB5oZgtQNkl&quot;&gt;institution_name&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre-wrap;&quot; data-src-align=&quot;8:9&quot; class=&quot;EzKURWReUAB5oZgtQNkl&quot;&gt;&lt;span data-src-align=&quot;0:13&quot; class=&quot;EzKURWReUAB5oZgtQNkl&quot;&gt;specialization&lt;/span&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;&lt;/span&gt;&lt;span style=&quot;white-space: pre-wrap;&quot; data-src-align=&quot;4:9&quot; class=&quot;EzKURWReUAB5oZgtQNkl&quot;&gt;graduation_year&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre-wrap;&quot; data-src-align=&quot;4:9&quot; class=&quot;EzKURWReUAB5oZgtQNkl&quot;&gt;&lt;span data-src-align=&quot;0:12&quot; class=&quot;EzKURWReUAB5oZgtQNkl&quot;&gt;qualification&lt;/span&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="mGRJRIDgVxIocvvJnjrP-6">
+          <mxGeometry y="50" width="120" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="mGRJRIDgVxIocvvJnjrP-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="tb89POoRp49hMDSTBCBt-8" target="mGRJRIDgVxIocvvJnjrP-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mGRJRIDgVxIocvvJnjrP-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="tb89POoRp49hMDSTBCBt-8" target="tb89POoRp49hMDSTBCBt-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
