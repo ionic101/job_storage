@@ -1,10 +1,10 @@
 from typing import List
 from pydantic import BaseModel
-from job_storage_api.schemas.vacancy import Vacancy
+from job_storage_api.schemas.vacancy import VacancySchema
 
 
 schemas: List[BaseModel] = [
-    Vacancy
+    VacancySchema
 ]
 
 __all__ = [
