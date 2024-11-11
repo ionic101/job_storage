@@ -15,6 +15,7 @@ alembic = "^1.13.3"
 sqlalchemy-utils = "^0.41.2"
 psycopg2 = "^2.9.10"
 url-normalize = "^1.4.3"
+requests = "^2.32.3"
 
 
 [build-system]
