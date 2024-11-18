@@ -15,7 +15,7 @@ class VacancyModel(Base):
     currency = Column(String)
     source_name = Column(String)
     source_link = Column(URLType)
-    skills = Column(ARRAY(String))
+    key_skills = Column(ARRAY(String))
     salary_from = Column(Float)
     salary_to = Column(Float)
     area = Column(String)

@@ -8,9 +8,16 @@ from sqlalchemy.orm import Session
 
 
 vacancy_router = APIRouter(prefix='/vacancy', tags=['Vacancy'])
-EXAMPLE_VACANCY: VacancySchema = VacancySchema(name='Example name of vacancy',
-    description='Example of description', employer_name='Example of employer name',
-    experience_id=1, currency='RU', source='avito', source_link='https://www.avito.ru/')
+EXAMPLE_VACANCY: VacancySchema = VacancySchema(
+    name='Example name of vacancy',
+    description='Example of description',
+    employer_name='Example of employer name',
+    experience_id='noExperience',
+    currency='RUR',
+    source_name='avito',
+    source_link='https://www.avito.ru/',
+    area='Moscow'
+)
 
 
 #TODO
