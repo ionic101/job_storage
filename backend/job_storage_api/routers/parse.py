@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 from time import sleep
 from typing import Literal
 from job_storage_api.routers.rabota import parse_vacancies_rabota
+from job_storage_api.routers.hh import parse_vacancies_hh
 
 
 parse_router = APIRouter(prefix='/parse', tags=['Parse'])
@@ -16,37 +17,9 @@ URLS: dict[str, str] = {
 }
 
 
-
-
 @parse_router.get('/hh')
-def parse_vacancies_hh(request: VacanciesFilter):
-    response: requests.Response = requests.get(URLS['hh'], data={'text': 'Программист', 'salary': 200000})
-    if not response.ok:
-        return response.status_code
-    vacancies = []
-    data: dict[str, Any] = response.json()['items']
-    for vacancy in data:
-        vacancy_data = requests.get(vacancy['url'])
-        if not vacancy_data.ok:
-            continue
-        vacancy_data = vacancy_data.json()
-        vacancies.append(
-            VacancySchema(
-                name=vacancy_data['name'],
-                description=BeautifulSoup(vacancy_data['description'], 'html.parser').get_text(),
-                employer_name=vacancy_data['employer']['name'],
-                experience_id=vacancy_data['experience']['id'],
-                currency=vacancy_data['salary']['currency'] if vacancy_data['salary'] else 'RUR',
-                area=vacancy_data['area']['name'],
-                source_name='hh',
-                source_link=vacancy['alternate_url'],
-                key_skills=[i['name'] for i in vacancy_data['key_skills']],
-                salary_from=vacancy_data['salary']['from'] if vacancy_data['salary'] else None,
-                salary_to=vacancy_data['salary']['to'] if vacancy_data['salary'] else None
-            )
-        )
-    return vacancies
-
+def parse_hh(request: VacanciesFilter):
+    return parse_vacancies_hh(request)
 
 
 @parse_router.get('/rabota')
@@ -61,7 +34,6 @@ def parse_vacancies_avito(request: VacanciesFilter):
 
 @parse_router.get('/')
 def parse_vacancies(request: VacanciesFilter):
-    sleep(1)
     return [
     {
         "name": "Грузчик",
@@ -137,7 +109,4 @@ def parse_vacancies(request: VacanciesFilter):
     }
 ]
 
-
-#print()
-#res = requests.get(URLS['hh'], data=)
-#print(get_rabota_data_request(VacanciesFilter(limit=10, text='Программист', area='Екатеринбург', salary=0, experience_ids=['between1And3'], currency='RUR', source_name='работа')))
+#VacanciesFilter(limit=10, text='Программист', area='Екатеринбург', salary=0, experience_ids=['between1And3'], currency='RUR')))

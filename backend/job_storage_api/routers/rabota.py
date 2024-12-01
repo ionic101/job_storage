@@ -2,6 +2,7 @@ from typing import Literal, Any
 import requests
 from job_storage_api.schemas.vacancies_filter import VacanciesFilter
 from job_storage_api.schemas.vacancy import VacancySchema
+from bs4 import BeautifulSoup
 
 
 URLS: dict[str, str] = {
@@ -74,7 +75,7 @@ def get_rabota_data_request(vacancies_filter: VacanciesFilter) -> dict[str, Any]
 def get_formated_vacancy(vacancy: dict[str, Any]) -> VacancySchema:
     return VacancySchema(
         name=vacancy['title'],
-        description=vacancy['description'],
+        description=BeautifulSoup(vacancy['description'], 'html.parser').get_text(),
         employer_name=vacancy['company']['name'],
         experience_id='noExperience',
         currency='RUR',
