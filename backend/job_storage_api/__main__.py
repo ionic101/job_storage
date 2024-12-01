@@ -10,7 +10,7 @@ def bind_routers(application: FastAPI, routers: List[APIRouter]) -> None:
 
 
 def get_app() -> FastAPI:
-    app: FastAPI = FastAPI()
+    app: FastAPI = FastAPI(title='JobStorageAPI')
     bind_routers(app, routers)
     return app
 

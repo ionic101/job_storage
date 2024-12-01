@@ -11,7 +11,7 @@ class VacancySchema(BaseModel):
     currency: Literal['AZN', 'BYR', 'EUR', 'GEL', 'KGS', 'KZT', 'RUR', 'UAH', 'USD', 'UZS']
     area: str
     source_name: Literal['hh', 'avito', 'работа']
-    source_link: HttpUrl
+    source_link: str
     key_skills: List[str] | None = None
     salary_from: float | None = None
     salary_to: float | None = None
