@@ -49,7 +49,7 @@ def get_hh_data_request(request: VacanciesFilter) -> dict[str, Any]:
     }
 
 
-def parse_vacancies_hh(request: VacanciesFilter):
+def parse_vacancies_hh(request: VacanciesFilter) -> list[VacancySchema]:
     response: requests.Response = requests.get(URLS['hh'], data=get_hh_data_request(request))
     if not response.ok:
         return response.text
