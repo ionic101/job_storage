@@ -6,8 +6,12 @@ from typing import Any
 from bs4 import BeautifulSoup
 from time import sleep
 from typing import Literal
+from fastapi import APIRouter, Query, Depends
 from job_storage_api.routers.rabota import parse_vacancies_rabota
 from job_storage_api.routers.hh import parse_vacancies_hh
+from job_storage_api.db.connection import get_session
+from sqlalchemy.orm import Session
+from job_storage_api.db.models import VacancyModel
 
 
 parse_router = APIRouter(prefix='/parse', tags=['Parse'])
@@ -17,9 +21,17 @@ URLS: dict[str, str] = {
 }
 
 
-@parse_router.get('/hh')
-def parse_hh(request: VacanciesFilter) -> list[VacancySchema]:
-    return parse_vacancies_hh(request)
+@parse_router.post('/hh')
+def parse_hh(request: VacanciesFilter, session: Session = Depends(get_session)) -> list[VacancySchema]:
+    vacancies: list[VacancySchema] = parse_vacancies_hh(request)
+    for vacancy in vacancies:
+        vacancy = VacancyModel(
+            **vacancy.dict()
+        )
+        session.add(vacancy)
+        session.commit()
+        session.refresh(vacancy)
+    return vacancies
 
 
 @parse_router.get('/rabota')
