@@ -1,6 +1,7 @@
 from fastapi import FastAPI, APIRouter
 from job_storage_api.routers import routers
 from typing import List
+from job_storage_api.utils.config import config
 import uvicorn
 
 
@@ -18,6 +19,8 @@ def get_app() -> FastAPI:
 def main() -> None:
     uvicorn.run(
         'job_storage_api.__main__:app',
+        host=config.APP_HOST,
+        port=config.APP_PORT,
         reload=True
     )
 
