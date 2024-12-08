@@ -1,5 +1,5 @@
 from job_storage_api.db import Base
-from sqlalchemy import Column, Integer, String, JSON, ARRAY
+from sqlalchemy import Column, Integer, String, JSON, ARRAY, ForeignKey
 from sqlalchemy.orm import relationship
 from typing import TYPE_CHECKING
 
@@ -10,7 +10,8 @@ if TYPE_CHECKING:
 class ResumeModel(Base):
     __tablename__ = 'resume'
     id = Column(Integer, primary_key=True, autoincrement=True)
-    user_id = relationship('UserModel', back_populates='resume')
+    user_id = Column(Integer, ForeignKey('user.id'))
+    owner = relationship('UserModel', back_populates='resumes')
     post_name = Column(String)
     description = Column(String)
     experience = Column(JSON)

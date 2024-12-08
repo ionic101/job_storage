@@ -14,4 +14,4 @@ class UserModel(Base):
     password_hash = Column(String)
     email = Column(String)
     date_of_birth = Column(Date)
-    resume_id = relationship('ResumeModel', back_populates='owner')
+    resumes = relationship('ResumeModel', back_populates='owner')
