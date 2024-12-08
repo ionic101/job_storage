@@ -5,18 +5,19 @@ from alembic import context
 from dotenv import load_dotenv
 from job_storage_api.db.models import *
 from job_storage_api.db import Base
+from job_storage_api.utils.config import config
 import os
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '..', '.env'))
-config = context.config
-config.set_section_option(config.config_ini_section, 'DB_URL', "postgresql://postgres:admin@localhost:5432/JobStorage")
+context_config = context.config
+context_config.set_section_option(context_config.config_ini_section, 'DB_URL', config.DB_URL)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
-if config.config_file_name is not None:
-    fileConfig(config.config_file_name)
+if context_config.config_file_name is not None:
+    fileConfig(context_config.config_file_name)
 
 # add your model's MetaData object here
 # for 'autogenerate' support
@@ -42,7 +43,7 @@ def run_migrations_offline() -> None:
     script output.
 
     """
-    url = config.get_main_option("sqlalchemy.url")
+    url = context_config.get_main_option("sqlalchemy.url")
     context.configure(
         url=url,
         target_metadata=target_metadata,
@@ -62,7 +63,7 @@ def run_migrations_online() -> None:
 
     """
     connectable = engine_from_config(
-        config.get_section(config.config_ini_section, {}),
+        context_config.get_section(context_config.config_ini_section, {}),
         prefix="sqlalchemy.",
         poolclass=pool.NullPool,
     )

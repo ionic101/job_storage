@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from sqlalchemy.orm import sessionmaker, Session
 from typing import Generator
 from job_storage_api.db import Base
+from job_storage_api.utils.config import config
 
 
 def get_session() -> Generator[Session, None, None]:
@@ -12,7 +13,6 @@ def get_session() -> Generator[Session, None, None]:
 
 
 load_dotenv()
-DB_URL = os.getenv('DB_URL')
-engine = create_engine(DB_URL)
+engine = create_engine(config.DB_URL)
 Base.metadata.create_all(bind=engine)
 SessionMaker = sessionmaker(bind=engine)

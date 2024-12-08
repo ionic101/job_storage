@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  api:
+    container_name: "job_storage_api"
+    build: .
+    ports:
+      - "8000:8000"
+    restart: always
+    depends_on:
+      - db
+    networks:
+      - backend
+
+  db:
+    container_name: "job_storage_db"
+    image: postgres:17
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+    restart: always
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge

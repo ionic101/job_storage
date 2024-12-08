@@ -16,6 +16,8 @@ sqlalchemy-utils = "^0.41.2"
 psycopg2 = "^2.9.10"
 url-normalize = "^1.4.3"
 requests = "^2.32.3"
+bs4 = "^0.0.2"
+pydantic-settings = "^2.6.1"
 
 
 [build-system]

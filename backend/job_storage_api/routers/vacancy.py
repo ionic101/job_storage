@@ -4,22 +4,27 @@ from job_storage_api.db.models import VacancyModel
 from typing import List, Annotated
 from job_storage_api.db.connection import get_session
 from sqlalchemy.orm import Session
+from time import sleep
 
 
 
 vacancy_router = APIRouter(prefix='/vacancy', tags=['Vacancy'])
-EXAMPLE_VACANCY: VacancySchema = VacancySchema(name='Example name of vacancy',
-    description='Example of description', employer_name='Example of employer name',
-    experience_id=1, currency='RU', source='avito', source_link='https://www.avito.ru/')
+EXAMPLE_VACANCY: VacancySchema = VacancySchema(
+    name='Example name of vacancy',
+    description='Example of description',
+    employer_name='Example of employer name',
+    experience_id='noExperience',
+    currency='RUR',
+    source_name='avito',
+    source_link='https://www.avito.ru/',
+    area='Moscow'
+)
 
 
 #TODO
-@vacancy_router.get('/search', response_model=List[VacancySchema])
-def search_vacancies(request: str, key_skills: Annotated[List[str] | None, Query()] = None,
-    experience_id: int | None = None, employer_name: str | None = None,
-    salary_from: int | None = None, salary_to: int | None = None,
-    currency: str | None = None, source: str | None = None):
-    return [EXAMPLE_VACANCY, EXAMPLE_VACANCY, EXAMPLE_VACANCY]
+@vacancy_router.get('/search')
+def find_vacancy(count: int):
+    return {}
 
 
 #TODO
@@ -37,3 +42,12 @@ def create_vacancy(vacancy_request: VacancySchema, session: Session = Depends(ge
     session.commit()
     session.refresh(vacancy)
     return {'message': 'success'}
+
+@vacancy_router.put('/')
+def put_vacancy():
+    return {}
+
+
+@vacancy_router.delete('/')
+def find_vacancy():
+    return {}
