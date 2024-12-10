@@ -15,13 +15,13 @@ parse_router = APIRouter(prefix='/parse', tags=['Parse'])
 @parse_router.get('/hh')
 def parse_hh(request: VacanciesFilter, session: Session = Depends(get_session)) -> list[VacancySchema]:
     vacancies: list[VacancySchema] = parse_vacancies_hh(request)
-    for vacancy in vacancies:
-        vacancy = VacancyModel(
-            **vacancy.dict()
-        )
-        session.add(vacancy)
-        session.commit()
-        session.refresh(vacancy)
+    #for vacancy in vacancies:
+    #    vacancy = VacancyModel(
+    #        **vacancy.dict()
+    #    )
+    #    session.add(vacancy)
+    #    session.commit()
+    #    session.refresh(vacancy)
     return vacancies
 
 

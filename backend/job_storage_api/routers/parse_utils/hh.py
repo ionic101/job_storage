@@ -42,9 +42,10 @@ def get_hh_data_request(request: VacanciesFilter) -> dict[str, Any]:
     data_request: dict[str, Any] = {
         'per_page': request.limit,
         'text': request.text,
-        'salary': request.salary,
         'currency': request.currency
     }
+    if request.currency is not None:
+        data_request['salary'] = request.salary
     if request.area is not None:
         data_request['area'] = get_area_id(request.area)
     if request.experience_ids is not None:

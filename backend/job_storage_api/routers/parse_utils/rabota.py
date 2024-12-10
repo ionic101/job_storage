@@ -56,6 +56,8 @@ def get_rabota_area_id(area_name: str) -> int | None:
 
 
 def get_rabota_data_request(vacancies_filter: VacanciesFilter) -> dict[str, Any]:
+    if vacancies_filter.salary is None:
+        vacancies_filter.salary = 0
     data_request: dict[str, Any] = {
         'limit': vacancies_filter.limit,
         'query': vacancies_filter.text,
