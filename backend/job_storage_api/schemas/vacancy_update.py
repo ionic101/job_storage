@@ -1,8 +1,9 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, HttpUrl, field_validator
 from typing import List, Literal
+from url_normalize import url_normalize
 
 
-class VacancySchema(BaseModel):
+class VacancyUpdate(BaseModel):
     name: str
     description: str
     employer_name: str

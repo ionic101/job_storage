@@ -39,24 +39,28 @@ def get_area_id(area_name: str) -> str | None:
 
 
 def get_hh_data_request(request: VacanciesFilter) -> dict[str, Any]:
-    return {
+    data_request: dict[str, Any] = {
         'per_page': request.limit,
         'text': request.text,
-        'area': get_area_id(request.area),
-        'salary': request.salary,
-        'experience': request.experience_ids,
         'currency': request.currency
     }
+    if request.currency is not None:
+        data_request['salary'] = request.salary
+    if request.area is not None:
+        data_request['area'] = get_area_id(request.area)
+    if request.experience_ids is not None:
+        data_request['experience'] = request.experience_ids
+    return data_request
 
 
 def parse_vacancies_hh(request: VacanciesFilter) -> list[VacancySchema]:
     response: requests.Response = requests.get(URLS['hh'], data=get_hh_data_request(request))
     if not response.ok:
-        return response.text
+        return response.text    # type: ignore
     vacancies = []
     data: dict[str, Any] = response.json()['items']
     for vacancy in data:
-        vacancy_data = requests.get(vacancy['url'])
+        vacancy_data = requests.get(vacancy['url'])    # type: ignore
         if not vacancy_data.ok:
             continue
         vacancy_data = vacancy_data.json()

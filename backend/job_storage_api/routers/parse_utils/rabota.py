@@ -56,19 +56,22 @@ def get_rabota_area_id(area_name: str) -> int | None:
 
 
 def get_rabota_data_request(vacancies_filter: VacanciesFilter) -> dict[str, Any]:
-    return {
-        'request': {
-            'limit': vacancies_filter.limit,
-            'query': vacancies_filter.text,
-            'filters': {
-                'experience_ids': get_rabota_experience_ids(vacancies_filter.experience_ids), # type: ignore
-                'min_salary': vacancies_filter.salary
-            },
-            'location': {
-                'region_id': get_rabota_area_id(vacancies_filter.area)
-            }
+    if vacancies_filter.salary is None:
+        vacancies_filter.salary = 0
+    data_request: dict[str, Any] = {
+        'limit': vacancies_filter.limit,
+        'query': vacancies_filter.text,
+        'filters': {
+            'min_salary': vacancies_filter.salary
         }
     }
+    if vacancies_filter.experience_ids is not None:
+        data_request['filters']['experience_ids'] = get_rabota_experience_ids(vacancies_filter.experience_ids)
+    if vacancies_filter.area is not None:
+        data_request['location'] = {
+            'region_id': get_rabota_area_id(vacancies_filter.area)
+        }
+    return {'request': data_request}
 
 
 #TODO: experience_id, currency, key_skills
