@@ -1,6 +1,5 @@
-from pydantic import BaseModel, HttpUrl, field_validator
+from pydantic import BaseModel
 from typing import List, Literal
-from url_normalize import url_normalize
 
 
 class VacancySchema(BaseModel):
@@ -15,7 +14,3 @@ class VacancySchema(BaseModel):
     key_skills: List[str] | None = None
     salary_from: float | None = None
     salary_to: float | None = None
-
-    #@field_validator('source_link')
-    #def convert_url_to_str(cls, v):
-    #    return str(v)
