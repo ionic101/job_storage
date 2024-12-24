@@ -2,22 +2,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:job_storage/Edit_Resume/First_Edit_Page.dart';
+import 'package:job_storage/Edit_Resume/Third_Edit_Page.dart';
 
+import 'Field.dart';
 import 'Progress_bar.dart';
+import 'Resume.dart';
 
 class EditSecondPage extends StatefulWidget {
-  const EditSecondPage({super.key, required this.title});
+  EditSecondPage({super.key, required this.resume});
 
-  final String title;
+  Resume resume;
 
   @override
-  State<EditSecondPage> createState() => _EditSecondPageState();
+  State<EditSecondPage> createState() => _EditSecondPageState(resume: resume);
 }
 
 class _EditSecondPageState extends State<EditSecondPage> {
-  void _incrementCounter() {
-    setState(() {});
-  }
+  _EditSecondPageState({ required this.resume});
+
+  Resume resume;
 
   @override
   Widget build(BuildContext context) {
@@ -56,10 +59,10 @@ class _EditSecondPageState extends State<EditSecondPage> {
                           padding: EdgeInsets.only(top: 40),
                           child: Column(
                             children: [
-                              Field(str: "Название учебного заведения", padding: 133,),
-                              Field(str: "Специальность", padding: 245,),
-                              Field(str: "Год окончания", padding: 245,),
-                              Field(str: "Какая у вас квалификация", padding: 162,),
+                             Field(str: "Название учебного заведения", padding: 133,type: "name_univer",resume: resume,),
+                             Field(str: "Год окончания", padding: 245,type: "year_end",resume: resume,),
+                             Field(str: "Какая у вас квалификация", padding: 162,type: "education",resume: resume,),
+                             //Field(str: "Какая у вас квалификация", padding: 162,),
                             ],
                           )
                       ),
@@ -73,13 +76,7 @@ class _EditSecondPageState extends State<EditSecondPage> {
           color: Colors.white,
           child: Stack(
             children: [
-              Padding(
-                padding: EdgeInsets.only(left: 4),
-                child: Progress_bar(
-                  left: 8,
-                  right: 0,
-                ),
-              ),
+              Padding(padding: EdgeInsets.only(left: 4), child: Progress_bar(left: 8, right: 0,),),
               Padding(padding: EdgeInsets.only(left: 88),child:Progress_bar(left: 0, right: 0,),),
               //Padding(padding: EdgeInsets.only(left: 83 * 2),child:Progress_bar(left: 0, right: 0,),),
               //Padding(padding: EdgeInsets.only(left: 83 * 3),child:Progress_bar(left: 0, right: 0,),),
@@ -94,7 +91,7 @@ class _EditSecondPageState extends State<EditSecondPage> {
                               context,
                               PageRouteBuilder(
                                   pageBuilder: (context, animation1, animation2) =>
-                                  const EditFirstPage(title: "")));
+                                      EditFirstPage(resume: resume)));
                         },
                         child: Container(
                           width: 163,
@@ -120,7 +117,15 @@ class _EditSecondPageState extends State<EditSecondPage> {
                   Padding(
                     padding: EdgeInsets.only(top: 22, right: 0),
                     child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            Navigator.pushReplacement(
+                                context,
+                                PageRouteBuilder(
+                                    pageBuilder: (context, animation1, animation2) =>
+                                        EditThirdPage(resume: resume,)));
+                          });
+                        },
                         child: Container(
                           width: 163,
                           height: 45,

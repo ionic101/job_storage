@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:job_storage/Edit_Resume/Second_Edit_Page.dart';
+import 'package:job_storage/Edit_Resume/First_Edit_Page.dart';
+import 'package:job_storage/Edit_Resume/Third_Edit_Page.dart';
 import 'package:job_storage/Main_Page/main.dart';
 import 'package:job_storage/Main_Page/values.dart';
 
@@ -8,19 +9,20 @@ import 'Field.dart';
 import 'Progress_bar.dart';
 import 'Resume.dart';
 
-class EditFirstPage extends StatefulWidget {
-  EditFirstPage({super.key, required this.resume});
+class EditFivePage extends StatefulWidget {
+  EditFivePage({super.key, required this.resume});
 
   Resume resume;
 
   @override
-  State<EditFirstPage> createState() => _EditFirstPageState(resume: resume);
+  State<EditFivePage> createState() => _EditFivePageState(resume: resume);
 }
 
-class _EditFirstPageState extends State<EditFirstPage> {
-  _EditFirstPageState({required this.resume});
+class _EditFivePageState extends State<EditFivePage> {
+  _EditFivePageState({required this.resume});
 
   Resume resume;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,13 +37,7 @@ class _EditFirstPageState extends State<EditFirstPage> {
                   Padding(
                     padding: EdgeInsets.only(right: 300),
                     child: IconButton(
-                        onPressed: (){
-                          Navigator.pushReplacement(
-                              context,
-                              PageRouteBuilder(
-                                  pageBuilder: (context, animation1, animation2) =>
-                                      MyHomePage(title: "")));
-                        },
+                        onPressed: null,
                         icon: Icon(
                           Icons.arrow_back,
                           color: Colors.white,
@@ -57,57 +53,33 @@ class _EditFirstPageState extends State<EditFirstPage> {
               child: Stack(
                 children: [
                   Text(
-                    " Заполните основную \n информацию",
+                    " Дополнительные вопросы",
                     style: TextStyle(fontSize: 19, fontWeight: FontWeight.w400),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 100),
-                    child: Text(
-                      "Создание резюме",
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                  Padding(
-                      padding: EdgeInsets.only(top: 146),
+                      padding: EdgeInsets.only(top: 30),
                       child: Column(
                         children: [
                           Field(
-                            str: "Фамилия",
-                            padding: 290,
-                            type: "surname",
+                            str:
+                                "Ваше ключевое преимущество над\nдругими кандидатами",
+                            padding: 80,
+                            type: "quastion1",
                             resume: resume,
                           ),
                           Field(
-                            str: "Имя",
-                            padding: 325,
-                            type: "name",
+                            str: "Почему вы интересуетесь этой\nдолжностью",
+                            padding: 120,
+                            type: "quastion2",
                             resume: resume,
                           ),
                           Field(
-                            str: "Номер телефона",
-                            padding: 235,
-                            type: "phone",
+                            str: "Ваши карьерные цели ",
+                            padding: 180,
+                            type: "quastion3",
                             resume: resume,
                           ),
-                          Field(
-                            str: "Электронная почта",
-                            padding: 216,
-                            type: "mail",
-                            resume: resume,
-                          ),
-                          Field(
-                            str: "Гражданство",
-                            padding: 265,
-                            type: "cityzenship",
-                            resume: resume,
-                          ),
-                          Field(
-                            str: "Адрес",
-                            padding: 300,
-                            type: "adress",
-                            resume: resume,
-                          ),
+                          //Field(str: "Какая у вас квалификация", padding: 162,),
                         ],
                       )),
                 ],
@@ -127,10 +99,34 @@ class _EditFirstPageState extends State<EditFirstPage> {
                   right: 0,
                 ),
               ),
-              //Padding(padding: EdgeInsets.only(left: 88),child:Progress_bar(left: 0, right: 0,),),
-              //Padding(padding: EdgeInsets.only(left: 83 * 2),child:Progress_bar(left: 0, right: 0,),),
-              //Padding(padding: EdgeInsets.only(left: 83 * 3),child:Progress_bar(left: 0, right: 0,),),
-              //Padding(padding: EdgeInsets.only(left: 83 * 4,right: 4),child:Progress_bar(left: 0, right: 8,),),
+              Padding(
+                padding: EdgeInsets.only(left: 88),
+                child: Progress_bar(
+                  left: 0,
+                  right: 0,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 83 * 2),
+                child: Progress_bar(
+                  left: 0,
+                  right: 0,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 83 * 3),
+                child: Progress_bar(
+                  left: 0,
+                  right: 0,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 83 * 4, right: 4),
+                child: Progress_bar(
+                  left: 0,
+                  right: 8,
+                ),
+              ),
               Row(
                 children: [
                   Padding(
@@ -140,9 +136,9 @@ class _EditFirstPageState extends State<EditFirstPage> {
                           Navigator.pushReplacement(
                               context,
                               PageRouteBuilder(
-                                  pageBuilder: (context, animation1, animation2) =>
-                                      MyHomePage(title: "")));
-
+                                  pageBuilder:
+                                      (context, animation1, animation2) =>
+                                          EditFirstPage(resume: resume)));
                         },
                         child: Container(
                           width: 163,
@@ -169,12 +165,29 @@ class _EditFirstPageState extends State<EditFirstPage> {
                     padding: EdgeInsets.only(top: 22, right: 0),
                     child: TextButton(
                         onPressed: () {
-                          Navigator.pushReplacement(
-                              context,
-                              PageRouteBuilder(
-                                  pageBuilder: (context, animation1, animation2) =>
-                                   EditSecondPage(resume: resume,)));
-                          print(resume.surname);
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  backgroundColor: Colors.white,
+                                  title: Text(
+                                    "Ваше резюме сохранено",
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  content: TextButton(
+                                    onPressed: () {
+                                      listOfResumes.add(resume);
+                                      Navigator.pushReplacement(
+                                          context,
+                                          PageRouteBuilder(
+                                              pageBuilder: (context, animation1,
+                                                      animation2) =>
+                                                  MyApp()));
+                                    },
+                                    child: Text("Хорошо"),
+                                  ),
+                                );
+                              });
                         },
                         child: Container(
                           width: 163,
@@ -191,7 +204,7 @@ class _EditFirstPageState extends State<EditFirstPage> {
                           decoration: BoxDecoration(
                               color: Color(0xFF3D52D5),
                               borderRadius:
-                              BorderRadius.all(Radius.circular(8))),
+                                  BorderRadius.all(Radius.circular(8))),
                         )),
                   )
                 ],

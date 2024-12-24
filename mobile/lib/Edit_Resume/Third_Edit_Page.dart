@@ -1,24 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:job_storage/Edit_Resume/Fourth_Edit_Page.dart';
 import 'package:job_storage/Edit_Resume/Second_Edit_Page.dart';
-import 'package:job_storage/Main_Page/main.dart';
 import 'package:job_storage/Main_Page/values.dart';
 
 import 'Field.dart';
 import 'Progress_bar.dart';
 import 'Resume.dart';
 
-class EditFirstPage extends StatefulWidget {
-  EditFirstPage({super.key, required this.resume});
+class EditThirdPage extends StatefulWidget {
+  EditThirdPage({super.key, required this.resume});
 
   Resume resume;
 
   @override
-  State<EditFirstPage> createState() => _EditFirstPageState(resume: resume);
+  State<EditThirdPage> createState() => _EditThirdPageState(resume: resume);
 }
 
-class _EditFirstPageState extends State<EditFirstPage> {
-  _EditFirstPageState({required this.resume});
+class _EditThirdPageState extends State<EditThirdPage> {
+  _EditThirdPageState({required this.resume});
 
   Resume resume;
   @override
@@ -35,13 +35,7 @@ class _EditFirstPageState extends State<EditFirstPage> {
                   Padding(
                     padding: EdgeInsets.only(right: 300),
                     child: IconButton(
-                        onPressed: (){
-                          Navigator.pushReplacement(
-                              context,
-                              PageRouteBuilder(
-                                  pageBuilder: (context, animation1, animation2) =>
-                                      MyHomePage(title: "")));
-                        },
+                        onPressed: null,
                         icon: Icon(
                           Icons.arrow_back,
                           color: Colors.white,
@@ -53,66 +47,64 @@ class _EditFirstPageState extends State<EditFirstPage> {
             ),
             SliverToBoxAdapter(
                 child: Padding(
-              padding: EdgeInsets.only(left: 29, top: 25),
-              child: Stack(
-                children: [
-                  Text(
-                    " Заполните основную \n информацию",
-                    style: TextStyle(fontSize: 19, fontWeight: FontWeight.w400),
+                  padding: EdgeInsets.only(left: 29, top: 25),
+                  child: Stack(
+                    children: [
+                      Text(
+                        " Опыт работы",
+                        style: TextStyle(fontSize: 19, fontWeight: FontWeight.w400),
+                      ),
+                      Padding(
+                          padding: EdgeInsets.only(top: 30),
+                          child: Column(
+                            children: [
+                              Field(
+                                str: "Где работали?",
+                                padding: 250,
+                                type: "company",
+                                resume: resume,
+                              ),
+                              Field(
+                                str: "Должности, на которых работали",
+                                padding: 110,
+                                type: "post",
+                                resume: resume,
+                              ),
+                              Field(
+                                str: "Какие были основные обязанности",
+                                padding: 100,
+                                type: "duties",
+                                resume: resume,
+                              ),
+                              Field(
+                                str: "Опыт работы",
+                                padding: 260,
+                                type: "expirience",
+                                resume: resume,
+                              ),
+                              Field(
+                                str: "Желаемая должность",
+                                padding: 200,
+                                type: "desired_post",
+                                resume: resume,
+                              ),
+                              Field(
+                                str: "Желаемаея зарплата",
+                                padding: 200,
+                                type: "desired_salary",
+                                resume: resume,
+                              ),
+                              Field(
+                                str: "Желаемый режим работы",
+                                padding: 160,
+                                type: "oper_mode",
+                                resume: resume,
+                              ),
+                            ],
+                          )),
+                    ],
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 100),
-                    child: Text(
-                      "Создание резюме",
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                  Padding(
-                      padding: EdgeInsets.only(top: 146),
-                      child: Column(
-                        children: [
-                          Field(
-                            str: "Фамилия",
-                            padding: 290,
-                            type: "surname",
-                            resume: resume,
-                          ),
-                          Field(
-                            str: "Имя",
-                            padding: 325,
-                            type: "name",
-                            resume: resume,
-                          ),
-                          Field(
-                            str: "Номер телефона",
-                            padding: 235,
-                            type: "phone",
-                            resume: resume,
-                          ),
-                          Field(
-                            str: "Электронная почта",
-                            padding: 216,
-                            type: "mail",
-                            resume: resume,
-                          ),
-                          Field(
-                            str: "Гражданство",
-                            padding: 265,
-                            type: "cityzenship",
-                            resume: resume,
-                          ),
-                          Field(
-                            str: "Адрес",
-                            padding: 300,
-                            type: "adress",
-                            resume: resume,
-                          ),
-                        ],
-                      )),
-                ],
-              ),
-            )),
+                )),
           ],
         ),
         bottomNavigationBar: Container(
@@ -127,8 +119,8 @@ class _EditFirstPageState extends State<EditFirstPage> {
                   right: 0,
                 ),
               ),
-              //Padding(padding: EdgeInsets.only(left: 88),child:Progress_bar(left: 0, right: 0,),),
-              //Padding(padding: EdgeInsets.only(left: 83 * 2),child:Progress_bar(left: 0, right: 0,),),
+              Padding(padding: EdgeInsets.only(left: 88),child:Progress_bar(left: 0, right: 0,),),
+              Padding(padding: EdgeInsets.only(left: 83 * 2),child:Progress_bar(left: 0, right: 0,),),
               //Padding(padding: EdgeInsets.only(left: 83 * 3),child:Progress_bar(left: 0, right: 0,),),
               //Padding(padding: EdgeInsets.only(left: 83 * 4,right: 4),child:Progress_bar(left: 0, right: 8,),),
               Row(
@@ -137,11 +129,6 @@ class _EditFirstPageState extends State<EditFirstPage> {
                     padding: EdgeInsets.only(top: 22, left: 16),
                     child: TextButton(
                         onPressed: () {
-                          Navigator.pushReplacement(
-                              context,
-                              PageRouteBuilder(
-                                  pageBuilder: (context, animation1, animation2) =>
-                                      MyHomePage(title: "")));
 
                         },
                         child: Container(
@@ -162,7 +149,7 @@ class _EditFirstPageState extends State<EditFirstPage> {
                           decoration: BoxDecoration(
                               color: Color(0xFF3D52D5),
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(8))),
+                              BorderRadius.all(Radius.circular(8))),
                         )),
                   ),
                   Padding(
@@ -173,7 +160,7 @@ class _EditFirstPageState extends State<EditFirstPage> {
                               context,
                               PageRouteBuilder(
                                   pageBuilder: (context, animation1, animation2) =>
-                                   EditSecondPage(resume: resume,)));
+                                      EditFourthPage(resume: resume,)));
                           print(resume.surname);
                         },
                         child: Container(

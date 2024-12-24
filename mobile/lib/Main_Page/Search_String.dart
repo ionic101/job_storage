@@ -1,40 +1,42 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:job_storage/Main_Page/main.dart';
 
-class Search_String extends StatelessWidget {
+class Search_String extends StatefulWidget {
   const Search_String({
     super.key,
   });
 
+  State<StatefulWidget> createState() => _Search_String();
+
+}
+
+class _Search_String extends State<StatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 13, left: 35, right: 35),
-      child: Container(
-        width: double.infinity,
+      child:SizedBox(
+        width:double.infinity ,
         height: 33,
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(8),
-            border: Border(
-              top: BorderSide(width: 1),
-              bottom: BorderSide(width: 1),
-              left: BorderSide(width: 1),
-              right: BorderSide(width: 1),
-            )),
-        child: Padding(
-          padding: EdgeInsets.only(top: 4, left: 10, bottom: 4),
-          child: Row(
-            children: [
-              Text("Профессии"),
-              Padding(
-                padding: EdgeInsets.only(left: 200),
-                child: Icon(Icons.search),
-              )
-            ],
-          ),
+        child: TextField(
+          onChanged: (value) {
+            setState(() {
+              String string = value.toLowerCase();
+            });
+          },
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderSide: BorderSide(width: 1),
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ) ,
+
         ),
-      ),
+      )
     );
   }
 }
+
+
+

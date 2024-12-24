@@ -1,15 +1,61 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:job_storage/Main_Page/main.dart';
+
+
+final List<String> name = [
+  "Python-разработчик",
+  "Разработчик C# Junior",
+  "Стажер-разработчик бэкенда",
+  "Разработчик баз данных ...",
+  "Программист 1С",
+
+];
+
+final List<String> salary = [
+  "60000 - 100000",
+  "Неизвестно",
+  "Неизвестно",
+  "Неизвестно",
+  "Неизвестно",
+  "59000",
+];
+
+final List<String> city = [
+  "Екатеринбург",
+  "Екатеринбург",
+  "Екатеринбург",
+  "Екатеринбург",
+  "Екатеринбург",
+  "Екатеринбург",
+
+];
+
+final List<String> company = [
+  "Теропром",
+  "Альтек Проектирование",
+  "Яндекс ",
+  "Центр финансовых технологий",
+  "Екром",
+  "ИП Зотов Дмитрий Олегович",
+
+
+];
+
+
 
 class SliverListMain extends StatelessWidget {
   const SliverListMain({
     super.key,
   });
 
+
+
+
   @override
   Widget build(BuildContext context) {
     return SliverList.builder(
-        itemCount: 5,
+        itemCount: MyHomePage(title: '').count() ,
         itemBuilder: (context, index) => Padding(
           padding: EdgeInsets.symmetric(horizontal: 30),
           child: Container(
@@ -33,20 +79,20 @@ class SliverListMain extends StatelessWidget {
                       children: [
                         Padding(
                             padding: EdgeInsets.only(
-                              right: 70,
+                              right: 0,
                             ),
                             child: Text(
-                              "Заголовок заголовок",
+                              name[index],
                               style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w400),
                             )),
-                        Icon(Icons.image)
+                        //Icon(Icons.image)
                       ],
                     ),
                     Padding(
                       padding: EdgeInsets.only(right: 225, top: 13),
-                      child: Text("30 000 - 50 000",
+                      child: Text(salary[index],
                           style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w400)),
@@ -113,22 +159,22 @@ class SliverListMain extends StatelessWidget {
                       children: [
                         Padding(
                           padding:
-                          EdgeInsets.only(right: 95, top: 28),
-                          child: Text("ООО Название компании",
+                          EdgeInsets.only(right: 0, top: 28),
+                          child: Text(company[index],
                               style: TextStyle(
                                   color: Color(0xFF444444),
                                   fontSize: 15,
                                   fontWeight: FontWeight.w400)),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(right: 0, top: 28),
-                          child: Icon(Icons.image),
-                        )
+                        //Padding(
+                        //  padding: EdgeInsets.only(right: 0, top: 28),
+                        //  child: Icon(Icons.image),
+                        //)
                       ],
                     ),
                     Padding(
-                      padding: EdgeInsets.only(right: 236, top: 13),
-                      child: Text("Екатеринбург",
+                      padding: EdgeInsets.only(right: 200, top: 13),
+                      child: Text(city[index],
                           style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w400)),

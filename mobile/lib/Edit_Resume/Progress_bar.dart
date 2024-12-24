@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:job_storage/Main_Page/values.dart';
+
+import 'Resume.dart';
 
 class Progress_bar extends StatelessWidget {
   const Progress_bar({
@@ -21,52 +24,6 @@ class Progress_bar extends StatelessWidget {
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(left),
               topRight: Radius.circular(right))),
-    );
-  }
-}
-
-class Field extends StatelessWidget {
-  const Field({
-    required this.str,
-    required this.padding,
-    super.key,
-  });
-  final String str;
-  final double padding;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(top: 28),
-      child: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(right: padding),
-            child: Text(
-              str,
-              textAlign: TextAlign.start,
-              style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w400),
-            ),
-          ),
-          Container(
-            height: 33,
-            width: 333,
-            child: TextField(),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
-              border: Border(
-                top: BorderSide(width: 0.5),
-                bottom: BorderSide(width: 0.5),
-                left: BorderSide(width: 0.5),
-                right: BorderSide(width: 0.5),
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
