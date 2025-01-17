@@ -1,5 +1,5 @@
 FROM python:3.12
-RUN pip install poetry
+RUN pip install poetry==1.7.1
 
 WORKDIR /jobstorage
 COPY . /jobstorage
